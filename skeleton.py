@@ -34,6 +34,18 @@ class Skeleton(object):
             self.pos_y = 0
         self.rect = (self.pos_x,self.pos_y,self.width,self.height)
 
+    def get_x(self):
+        return self.pos_x
+
+    def get_y(self):
+        return self.pos_y
+
+    def get_width(self):
+        return self.width
+
+    def get_height(self):
+        return self.height
+
     def update(self):
         if self.delay > 0:
             self.delay -= 1

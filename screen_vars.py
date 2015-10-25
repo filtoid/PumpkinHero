@@ -1,5 +1,5 @@
 SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 6git 00
+SCREEN_HEIGHT = 600
 
 class ScreenVars(object):
     def get_width(self):

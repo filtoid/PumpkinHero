@@ -24,6 +24,18 @@ class Monster(object):
             return (-100,-100,self.width, self.height)
         return self.rect
 
+    def get_x(self):
+        return self.pos_x
+
+    def get_y(self):
+        return self.pos_y
+
+    def get_width(self):
+        return self.width
+
+    def get_height(self):
+        return self.height
+
     def move(self, speed):
         if self.delay>0:
             return
