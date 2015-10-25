@@ -20,10 +20,10 @@ if __name__ == '__main__':
 
     black = (0,0,0)
 
-    witch = Witch(25,0,50,100)
-    zombie = Zombie(125,0,50,100)
-    monster = Monster(225,0,50,100)
-    skeleton = Skeleton(325,0,50,100)
+    witch = Witch(50,0,100,200)
+    zombie = Zombie(250,0,100,200)
+    monster = Monster(450,0,100,200)
+    skeleton = Skeleton(650,0,100,200)
 
     done = False
     last_time = time.time()*1000.0
@@ -34,6 +34,7 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                     done = True
 
+        # Game loop
         if (time.time()*1000.0)-last_time > FRAME_TIME:
             last_time = time.time()*1000.0
 
@@ -48,6 +49,7 @@ if __name__ == '__main__':
             skeleton.move(SPEED)
 
             screen.fill(black)
+            
             screen.blit(witch.get_image(), witch.get_rect())
             screen.blit(zombie.get_image(), zombie.get_rect())
             screen.blit(monster.get_image(), monster.get_rect())
