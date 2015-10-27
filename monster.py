@@ -49,3 +49,7 @@ class Monster(object):
     def update(self):
         if self.delay > 0:
             self.delay -= 1
+
+    def kill(self):
+        self.delay = random.randint(10,100)
+        self.pos_y = 0

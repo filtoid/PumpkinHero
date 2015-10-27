@@ -35,7 +35,7 @@ class Zombie(object):
 
     def get_height(self):
         return self.height
-        
+
     def move(self, speed):
         if self.delay>0:
             return
@@ -49,3 +49,7 @@ class Zombie(object):
     def update(self):
         if self.delay > 0:
             self.delay -= 1
+
+    def kill(self):
+        self.delay = random.randint(10,100)
+        self.pos_y = 0

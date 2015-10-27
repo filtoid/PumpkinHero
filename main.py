@@ -1,5 +1,6 @@
 import pygame
 import time
+from key_monitor import KeyMonitor
 from screen_vars import ScreenVars
 
 from game import Game
@@ -30,11 +31,18 @@ if __name__ == '__main__':
     last_time = time.time()*1000.0
     SPEED = 5
     game = Game()
+    key_monitor = KeyMonitor()
 
     while not done:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                    done = True
+                done = True
+            if event.type == pygame.KEYDOWN:
+                print("Key down")
+                print(event.key)
+                key_monitor.key_down()
+            if event.type == pygame.KEYUP:
+                key_monitor.key_up()
 
         # Game loop
         if (time.time()*1000.0)-last_time > FRAME_TIME:
@@ -52,11 +60,7 @@ if __name__ == '__main__':
 
             screen.fill(black)
 
-            game.check_piece([witch,zombie,monster,skeleton])
-            # game.check_piece(witch)
-            # game.check_piece(zombie)
-            # game.check_piece(monster)
-            # game.check_piece(skeleton)
+            game.check_piece([witch,zombie,monster,skeleton], key_monitor)
 
             game.draw_background(screen)
 

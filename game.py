@@ -17,6 +17,9 @@ class Game(object):
         self.section_2 = False
         self.section_3 = False
 
+        self.key_array = [False,False,False,False]
+        self.points = 0
+
     def draw_background(self, screen):
         if self.section_1:
             pygame.draw.rect(screen, self.yellow, (0,self.section_1_y,self.screen_vars.get_width(),75), 0)
@@ -33,19 +36,54 @@ class Game(object):
         else:
             pygame.draw.rect(screen, self.dark_yellow, (0,self.section_3_y,self.screen_vars.get_width(),75), 0)
 
-    def check_piece(self, pieceary):
-
+    def check_piece(self, pieceary, keymonitor):
         self.section_1 = False
         self.section_2 = False
         self.section_3 = False
 
-        for piece in pieceary:
+        key_just_pressed = [False,False,False,False]
+
+        if keymonitor.get_key(0)==True and self.key_array[0]==False:
+            self.key_array[0] = True
+            key_just_pressed[0] = True
+        elif not keymonitor.get_key(0)==False:
+            self.key_array[0] = False
+
+        if keymonitor.get_key(1)==True and self.key_array[1]==False:
+            self.key_array[1] = True
+            key_just_pressed[1] = True
+        elif not keymonitor.get_key(1)==False:
+            self.key_array[1] = False
+
+        if keymonitor.get_key(2)==True and self.key_array[2]==False:
+            self.key_array[2] = True
+            key_just_pressed[2] = True
+        elif not keymonitor.get_key(2)==False:
+            self.key_array[2] = False
+
+        if keymonitor.get_key(3)==True and self.key_array[3]==False:
+            self.key_array[3] = True
+            key_just_pressed[3] = True
+        elif not keymonitor.get_key(3)==False:
+            self.key_array[3] = False
+
+
+        for index,piece in enumerate(pieceary):
             y_pos = piece.get_y() + piece.get_height()
             if  y_pos > self.section_1_y and y_pos<self.section_1_y+75:
                 self.section_1 = True
+                if key_just_pressed[index]:
+                    piece.kill()
+                    self.points += 1
 
             if  y_pos > self.section_2_y and y_pos<self.section_2_y+100:
                 self.section_2 = True
+                if key_just_pressed[index]:
+                    piece.kill()
+                    self.points += 2
 
             if  y_pos > self.section_3_y and y_pos<self.section_3_y+75:
                 self.section_3 = True
+                if key_just_pressed[index]:
+                    piece.kill()
+                    self.points += 1
