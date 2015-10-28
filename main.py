@@ -43,6 +43,7 @@ if __name__ == '__main__':
 	        elif event.type == pygame.KEYDOWN and event.key == pygame.K_s and game.started()==False:
 		        #print("starting new game")
 			    game.start()
+			    last_time = time.time()*1000
 	        elif event.type == pygame.KEYDOWN:
 	            #print(event.key)
 	            key_monitor.key_down(event)
@@ -50,7 +51,7 @@ if __name__ == '__main__':
 	            key_monitor.key_up(event)
 
         # Game loop
-        if (time.time()*1000.0)-last_time > FRAME_TIME:
+        if game.started() and (time.time()*1000.0)-last_time > FRAME_TIME:
             last_time = time.time()*1000.0
 
             witch.update()
@@ -75,3 +76,5 @@ if __name__ == '__main__':
             screen.blit(skeleton.get_image(), skeleton.get_rect())
 
             pygame.display.flip()
+        elif not game.started():
+			game.draw_score(screen)

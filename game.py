@@ -89,6 +89,9 @@ class Game(object):
                     piece.kill()
                     self.points += 1
 
+    def draw_score(self, screen):
+    	pass
+
     def started(self):
 	    return self.started_game
 
