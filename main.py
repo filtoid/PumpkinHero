@@ -40,9 +40,9 @@ if __name__ == '__main__':
             if event.type == pygame.KEYDOWN:
                 print("Key down")
                 print(event.key)
-                key_monitor.key_down()
+                key_monitor.key_down(event)
             if event.type == pygame.KEYUP:
-                key_monitor.key_up()
+                key_monitor.key_up(event)
 
         # Game loop
         if (time.time()*1000.0)-last_time > FRAME_TIME:
