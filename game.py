@@ -110,7 +110,7 @@ class Game(object):
         screen.blit(start, (200, 400))
 
     def tick(self):
-        if self.started_game and self.last_time - time.time() > 1:
+        if self.started_game and time.time()-self.last_time > 1:
             self.time -= 1
 
         if self.time < 1 and not self.started_game:
@@ -123,6 +123,7 @@ class Game(object):
         if self.started_game == False:
             print("Game starting")
             self.started_game = True
+            self.last_time = time.time()
             self.timer = 30
         else:
             print("Game has already started - can't restart")
