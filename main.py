@@ -36,23 +36,25 @@ if __name__ == '__main__':
     #Message pump
     while not done:
         for event in pygame.event.get():
-	        if event.type == pygame.QUIT:
-	            done = True
-	        elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
-	            done = True
-	        elif event.type == pygame.KEYDOWN and event.key == pygame.K_s and game.started()==False:
-		        #print("starting new game")
-			    game.start()
-	        elif event.type == pygame.KEYDOWN:
-	            #print(event.key)
-	            key_monitor.key_down(event)
-	        elif event.type == pygame.KEYUP:
-	            key_monitor.key_up(event)
+            if event.type == pygame.QUIT:
+                done = True
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+                done = True
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_s and game.started()==False:
+                #print("starting new game")
+                game.start()
+                last_time = time.time()*1000
+            elif event.type == pygame.KEYDOWN:
+                #print(event.key)
+                key_monitor.key_down(event)
+            elif event.type == pygame.KEYUP:
+                key_monitor.key_up(event)
 
         # Game loop
-        if (time.time()*1000.0)-last_time > FRAME_TIME:
+        if game.started() and (time.time()*1000.0)-last_time > FRAME_TIME:
             last_time = time.time()*1000.0
-
+            game.tick()
+            
             witch.update()
             zombie.update()
             monster.update()
@@ -73,5 +75,11 @@ if __name__ == '__main__':
             screen.blit(zombie.get_image(), zombie.get_rect())
             screen.blit(monster.get_image(), monster.get_rect())
             screen.blit(skeleton.get_image(), skeleton.get_rect())
+
+            pygame.display.flip()
+        elif not game.started():
+            screen.fill(black)
+
+            game.draw_score(screen)
 
             pygame.display.flip()
