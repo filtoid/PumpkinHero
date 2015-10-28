@@ -111,10 +111,12 @@ class Game(object):
 
     def tick(self):
         if self.started_game and time.time()-self.last_time > 1:
-            self.time -= 1
+            self.timer -= 1
+            self.last_time = time.time()
 
-        if self.time < 1 and not self.started_game:
-            self.started_game = False
+        if self.timer < 1 and self.started_game:
+			self.timer = 0
+			self.started_game = False
 
     def started(self):
 	    return self.started_game
