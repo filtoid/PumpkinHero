@@ -19,6 +19,7 @@ class Game(object):
 
         self.key_array = [False,False,False,False]
         self.points = 0
+        self.started_game = False
 
     def draw_background(self, screen):
         if self.section_1:
@@ -87,3 +88,13 @@ class Game(object):
                 if key_just_pressed[index]:
                     piece.kill()
                     self.points += 1
+
+    def started(self):
+	    return self.started_game
+
+    def start(self):
+        if self.started_game == False:
+		    print("Game starting")
+		    self.started_game = True
+        else:
+            print("Game has already started - can't restart")
