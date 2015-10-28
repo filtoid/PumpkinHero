@@ -47,7 +47,7 @@ class Game(object):
         screen.blit(text, (5,5))
 
         score = myfont.render("Score: " + str(self.points), 1, (255,255,0))
-        screen.blit(score, (60, 5))
+        screen.blit(score, (245, 5))
 
     def check_piece(self, pieceary, keymonitor):
         self.section_1 = False
