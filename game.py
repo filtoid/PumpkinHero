@@ -95,6 +95,8 @@ class Game(object):
 
         #Print remaining time
         myfont = pygame.font.SysFont("monospace", 45)
+        text = myfont.render("Time: " + str(self.timer), 1, (255,255,0))
+        screen.blit(text, (5,5))
 
     def draw_score(self, screen):
         myfont = pygame.font.SysFont("monospace", 45)
@@ -121,5 +123,6 @@ class Game(object):
         if self.started_game == False:
             print("Game starting")
             self.started_game = True
+            self.timer = 30
         else:
             print("Game has already started - can't restart")
