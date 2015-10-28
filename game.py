@@ -1,4 +1,5 @@
 import pygame
+import time
 from screen_vars import ScreenVars
 
 class Game(object):
@@ -20,6 +21,9 @@ class Game(object):
         self.key_array = [False,False,False,False]
         self.points = 0
         self.started_game = False
+
+        self.timer = 0
+        self.last_time = 0
 
     def draw_background(self, screen):
         if self.section_1:
@@ -89,6 +93,9 @@ class Game(object):
                     piece.kill()
                     self.points += 1
 
+        #Print remaining time
+        myfont = pygame.font.SysFont("monospace", 45)
+
     def draw_score(self, screen):
         myfont = pygame.font.SysFont("monospace", 45)
         # render text
@@ -99,6 +106,13 @@ class Game(object):
         screen.blit(score, (150, 300))
         start = myfont2.render("Press S to start", 1, (255,255,0))
         screen.blit(start, (200, 400))
+
+    def tick(self):
+        if self.started_game and self.last_time - time.time() > 1:
+            self.time -= 1
+
+        if self.time < 1 and not self.started_game:
+            self.started_game = False
 
     def started(self):
 	    return self.started_game
