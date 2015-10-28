@@ -90,14 +90,22 @@ class Game(object):
                     self.points += 1
 
     def draw_score(self, screen):
-    	pass
+        myfont = pygame.font.SysFont("monospace", 45)
+        # render text
+        label = myfont.render("Pumpkin Hero", 1, (255,255,0))
+        screen.blit(label, (100, 100))
+        myfont2 = pygame.font.SysFont("monospace", 35)
+        score = myfont2.render("Previous Score: " + str(self.points), 1, (255,255,0))
+        screen.blit(score, (150, 300))
+        start = myfont2.render("Press S to start", 1, (255,255,0))
+        screen.blit(start, (200, 400))
 
     def started(self):
 	    return self.started_game
 
     def start(self):
         if self.started_game == False:
-		    print("Game starting")
-		    self.started_game = True
+            print("Game starting")
+            self.started_game = True
         else:
             print("Game has already started - can't restart")

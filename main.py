@@ -36,19 +36,19 @@ if __name__ == '__main__':
     #Message pump
     while not done:
         for event in pygame.event.get():
-	        if event.type == pygame.QUIT:
-	            done = True
-	        elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
-	            done = True
-	        elif event.type == pygame.KEYDOWN and event.key == pygame.K_s and game.started()==False:
-		        #print("starting new game")
-			    game.start()
-			    last_time = time.time()*1000
-	        elif event.type == pygame.KEYDOWN:
-	            #print(event.key)
-	            key_monitor.key_down(event)
-	        elif event.type == pygame.KEYUP:
-	            key_monitor.key_up(event)
+            if event.type == pygame.QUIT:
+                done = True
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+                done = True
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_s and game.started()==False:
+                #print("starting new game")
+                game.start()
+                last_time = time.time()*1000
+            elif event.type == pygame.KEYDOWN:
+                #print(event.key)
+                key_monitor.key_down(event)
+            elif event.type == pygame.KEYUP:
+                key_monitor.key_up(event)
 
         # Game loop
         if game.started() and (time.time()*1000.0)-last_time > FRAME_TIME:
@@ -77,4 +77,8 @@ if __name__ == '__main__':
 
             pygame.display.flip()
         elif not game.started():
-			game.draw_score(screen)
+            screen.fill(black)
+
+            game.draw_score(screen)
+
+            pygame.display.flip()
