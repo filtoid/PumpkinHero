@@ -59,6 +59,7 @@ if __name__ == '__main__':
         if game.started() and (time.time()*1000.0)-last_time > FRAME_TIME:
             last_time = time.time()*1000.0
             game.tick()
+            key_monitor.tick()
 
             witch.update()
             zombie.update()
