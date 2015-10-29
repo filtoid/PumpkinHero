@@ -6,9 +6,9 @@ however you can just use the arrow keys if you prefer.
 
 To run the game (from terminal but in an x-window session)
 ---------------
-1/ Clone the game by typing 'git clone https://github.con/filtoid/PumpkinHero
-2/ cd 'PumpkinHero'
-3/ python main.py
+1. Clone the game by typing 'git clone https://github.con/filtoid/PumpkinHero
+2. cd 'PumpkinHero'
+3. python main.py
 
 Troubleshooting
 ---------------
