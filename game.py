@@ -22,6 +22,7 @@ class Game(object):
         self.points = 0
         self.started_game = False
 
+        self.high_score = 0
         self.timer = 0
         self.last_time = 0
 
@@ -83,23 +84,31 @@ class Game(object):
 
         for index,piece in enumerate(pieceary):
             y_pos = piece.get_y() + piece.get_height()
+            piece_killed = False
             if  y_pos > self.section_1_y and y_pos<self.section_1_y+75:
                 self.section_1 = True
                 if key_just_pressed[index]:
                     piece.kill()
                     self.points += 1
+                    piece_killed = True
 
             if  y_pos > self.section_2_y and y_pos<self.section_2_y+100:
                 self.section_2 = True
                 if key_just_pressed[index]:
                     piece.kill()
                     self.points += 2
+                    piece_killed = True
 
             if  y_pos > self.section_3_y and y_pos<self.section_3_y+75:
                 self.section_3 = True
                 if key_just_pressed[index]:
                     piece.kill()
                     self.points += 1
+                    piece_killed = True
+
+            if not piece_killed and key_just_pressed[index]:
+                piece.kill()
+
 
     def draw_score(self, screen):
         myfont = pygame.font.SysFont("monospace", 45)
@@ -109,7 +118,9 @@ class Game(object):
         myfont2 = pygame.font.SysFont("monospace", 35)
         score = myfont2.render("Previous Score: " + str(self.points), 1, (255,255,0))
         screen.blit(score, (150, 300))
-        start = myfont2.render("Press S to start", 1, (255,255,0))
+        hiscore = myfont2.render("High Score: " + str(self.high_score), 1, (255,255,0))
+        screen.blit(hiscore, (150, 250))
+        start = myfont2.render("Press Space to start", 1, (255,255,0))
         screen.blit(start, (200, 400))
 
     def tick(self):
@@ -118,8 +129,12 @@ class Game(object):
             self.last_time = time.time()
 
         if self.timer < 1 and self.started_game:
-			self.timer = 0
-			self.started_game = False
+            # Store high score for this session
+            if self.points > self.high_score:
+                self.high_score = self.points
+
+            self.timer = 0
+            self.started_game = False
 
     def started(self):
 	    return self.started_game
@@ -129,6 +144,7 @@ class Game(object):
             print("Game starting")
             self.started_game = True
             self.last_time = time.time()
+            self.points = 0
             self.timer = 30
             self.score = 0
         else:

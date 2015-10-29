@@ -40,8 +40,13 @@ if __name__ == '__main__':
                 done = True
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
                 done = True
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_s and game.started()==False:
-                #print("starting new game")
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and game.started()==False:
+                #Reset all the pieces
+                witch.kill()
+                zombie.kill()
+                monster.kill()
+                skeleton.kill()
+
                 game.start()
                 last_time = time.time()*1000
             elif event.type == pygame.KEYDOWN:
@@ -55,7 +60,7 @@ if __name__ == '__main__':
             last_time = time.time()*1000.0
             game.tick()
             key_monitor.tick()
-            
+
             witch.update()
             zombie.update()
             monster.update()
