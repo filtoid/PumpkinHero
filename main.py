@@ -22,10 +22,10 @@ if __name__ == '__main__':
 
     black = (0,0,0)
 
-    witch = Witch(50,0,100,200)
-    zombie = Zombie(250,0,100,200)
-    monster = Monster(450,0,100,200)
-    skeleton = Skeleton(650,0,100,200)
+    witch = Witch(50,0,75,75)
+    zombie = Zombie(250,0,75,75)
+    monster = Monster(450,0,75,75)
+    skeleton = Skeleton(650,0,75,75)
 
     done = False
     last_time = time.time()*1000.0
