@@ -130,5 +130,6 @@ class Game(object):
             self.started_game = True
             self.last_time = time.time()
             self.timer = 30
+            self.score = 0
         else:
             print("Game has already started - can't restart")
