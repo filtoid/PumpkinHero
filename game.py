@@ -118,8 +118,8 @@ class Game(object):
             self.last_time = time.time()
 
         if self.timer < 1 and self.started_game:
-			self.timer = 0
-			self.started_game = False
+            self.timer = 0
+            self.started_game = False
 
     def started(self):
 	    return self.started_game
