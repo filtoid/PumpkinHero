@@ -22,7 +22,7 @@ Then rerun the instructions above
 
 Rules
 -----
-You need to hit the button corresponding with the lane for each character as the leading edge (lower edge) of the graphic crosses into the yellow or green areas. If you hit the key in the yellow area you get 1 point and if you hit it in the green area you get 2 points. 
+You need to hit the button corresponding with the lane for each character as the leading edge (lower edge) of the graphic crosses into the yellow or green areas. If you hit the key in the yellow area you get 1 point and if you hit it in the green area you get 2 points.
 
 To start a game press 's'
 
@@ -42,4 +42,4 @@ This game is designed to work with a Makey Makey. The Makey Makey works by mappi
 
 Support
 -------
-Curently this code only supports Linux. It may work on Windows but Pygame does not get keydown events in MacOS by default. Some clever trickery is needed to achieve this. If you can figure out how to get the keys to work on MacOS then please feel free to update the docs and send a pull request - it would be very gratefully received :)
+Curently this code only supports Linux and Windows. ~~It may work on Windows~~ It does work on Windows (with Pygame installed) but Pygame does not get keydown events in MacOS by default. Some clever trickery is needed to achieve this. If you can figure out how to get the keys to work on MacOS then please feel free to update the docs and send a pull request - it would be very gratefully received :)
