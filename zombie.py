@@ -5,7 +5,7 @@ from screen_vars import ScreenVars
 class Zombie(object):
     def __init__(self,x,y,w,h):
         self.screen_vars = ScreenVars()
-        self.image = pygame.image.load("zombie.jpeg")
+        self.image = pygame.image.load("images/zombie.jpeg")
         self.width = w
         self.height = h
         self.pos_x = x

@@ -5,7 +5,7 @@ from screen_vars import ScreenVars
 class Monster(object):
     def __init__(self,x,y,w,h):
         self.screen_vars = ScreenVars()
-        self.image = pygame.image.load("monster.jpeg")
+        self.image = pygame.image.load("images/monster.jpeg")
         self.width = w
         self.height = h
         self.pos_x = x
